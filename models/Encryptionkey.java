@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "encryption_keys")
-public class EncryptionKeys {
+public class EncryptionKey {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
