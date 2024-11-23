@@ -1,0 +1,84 @@
+/* Change text color of selected item in ComboBox text field */
+.combo-box .text-field {
+    -fx-text-fill: gray;  /* Set the text color (use your preferred color) */
+}
+/* Change text color of items in the ComboBox drop-down */
+.combo-box .list-cell {
+    -fx-text-fill: gray;  /* Set the text color for list items */
+}
+.combo-box{
+    -fx-background-color: transparent;
+}
+.button-border {
+    -fx-border-color: rgb(255, 255, 255);
+    -fx-border-width: 2px;
+    -fx-padding: 10;
+}
+.progress-indicator .arc{
+    -fx-stroke: #0090ff;
+}
+.progress-indicator .track{
+    -fx-stroke:  #121212;
+}
+.progress-bar-container {
+    -fx-background-color: #121212; /* Set background color */
+    -fx-padding: 5; /* Optional padding */
+}
+
+.progress-bar {
+    -fx-accent: #0090ff; /* Set the progress bar color */
+}
+.cropping-container {
+    -fx-pref-width: 200px; /* Cropped width */
+    -fx-pref-height: 150px; /* Cropped height */
+    -fx-overflow: hidden; /* Ensures anything outside bounds is hidden */
+}
+
+.cropped-image {
+    -fx-translate-x: -50px; /* Adjust horizontal position */
+    -fx-translate-y: -50px; /* Adjust vertical position */
+    -fx-fit-width: 300px; /* Original image width if resized */
+    -fx-fit-height: 300px; /* Original image height if resized */
+}
+/* Apply to the GridPane */
+.grid-pane {
+    -fx-border-color: white; /* Outer border of the entire grid */
+    -fx-border-width: 2px;  /* Thickness of the outer border */
+    -fx-padding: 5px;       /* Padding inside the grid */
+    -fx-hgap: 2px;          /* Horizontal spacing between cells */
+    -fx-vgap: 2px;          /* Vertical spacing between cells */
+    -fx-background-color: white; /* Optional: Background color */
+}
+
+/* Apply to individual cells in the GridPane */
+.grid-cell {
+    -fx-border-color: white; /* Border color for each cell */
+    -fx-border-width: 1px;  /* Thickness of the cell border */
+    -fx-border-style: solid; /* Solid border for cells */
+    -fx-background-color: lightgray; /* Background color for cells */
+    -fx-alignment: center;  /* Center alignment for text or content */
+    -fx-padding: 10px;      /* Padding inside the cell */
+}
+.scroll-bar:vertical {
+    -fx-pref-width: 15px; /* Vertical scrollbar thickness */
+}
+
+.scroll-bar:horizontal {
+    -fx-pref-height: 15px; /* Horizontal scrollbar thickness */
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: #e0e0e0; /* Background color of the vertical track */
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #202020; /* Color of the vertical thumb */
+}
+
+.scroll-bar:horizontal .track {
+    -fx-background-color: #e0e0e0; /* Background color of the horizontal track */
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #202020; /* Color of the horizontal thumb */
+}
