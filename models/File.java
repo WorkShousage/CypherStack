@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "files")
-public class Files {
+public class File {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
