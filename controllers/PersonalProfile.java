@@ -38,7 +38,26 @@ public class SignInController {
             return;
         }
 
-        // Logic for sign-in (e.g., validate credentials)
+if (validateCredentials(email, password)) {
+    statusLabel.setText("Sign-in successful!");
+    
+    // Add logic to navigate to the next screen
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml")); // Replace with your actual FXML file name
+        Parent dashboardView = loader.load();
+
+        // Get the current stage (window)
+        Stage currentStage = (Stage) signInButton.getScene().getWindow();
+
+        // Set the new scene
+        currentStage.setScene(new Scene(dashboardView));
+        currentStage.show();
+    } catch (Exception e) {
+        e.printStackTrace(); // Handle any exceptions that occur during loading
+    }
+} else {
+    statusLabel.setText("Invalid email or password.");
+}
         if (validateCredentials(email, password)) {
             statusLabel.setText("Sign-in successful!");
             // Add logic to navigate to the next screen
@@ -55,14 +74,40 @@ public class SignInController {
     @FXML
     private void handleForgotPassword() {
         System.out.println("Forgot password clicked!");
-        // Logic to handle password recovery
+
+try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordRecovery.fxml")); // Replace with your actual FXML file name
+    Parent recoveryView = loader.load();
+
+    // Get the current stage (window)
+    Stage currentStage = (Stage) forgotPasswordLink.getScene().getWindow();
+
+    // Set the new scene
+    currentStage.setScene(new Scene(recoveryView));
+    currentStage.show();
+} catch (Exception e) {
+    e.printStackTrace(); // Handle any exceptions that occur during loading
+}
     }
 
     // Event handler for the Create Account hyperlink
     @FXML
     private void handleCreateAccount() {
         System.out.println("Create Account clicked!");
-        // Logic to navigate to the account creation screen
+      
+try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateAccount.fxml")); // Replace with your actual FXML file name
+    Parent createAccountView = loader.load();
+
+    // Get the current stage (window)
+    Stage currentStage = (Stage) createAccountLink.getScene().getWindow();
+
+    // Set the new scene
+    currentStage.setScene(new Scene(createAccountView));
+    currentStage.show();
+} catch (Exception e) {
+    e.printStackTrace(); // Handle any exceptions that occur during loading
+}
     }
 
     // Method to validate user credentials (dummy implementation)
