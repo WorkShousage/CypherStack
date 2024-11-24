@@ -53,7 +53,14 @@ public class MainController {
             return;
         }
 
-        // Logic to save the information (e.g., to a database or file)
+try (BufferedWriter writer = new BufferedWriter(new FileWriter("employee_data.txt", true))) {
+    writer.write(String.format("Company: %s, Employee ID: %s, Department: %s, Address: %s, Job Title: %s%n",
+            companyName, employeeId, department, workAddress, jobTitle));
+    statusLabel.setText("Information saved successfully!");
+    clearFields();
+} catch (IOException e) {
+    statusLabel.setText("Error saving information: " + e.getMessage());
+}
         System.out.println("Saving information...");
         System.out.printf("Company: %s, Employee ID: %s, Department: %s, Address: %s, Job Title: %s%n",
                 companyName, employeeId, department, workAddress, jobTitle);
@@ -75,21 +82,65 @@ public class MainController {
     @FXML
     private void handlePersonalInfoButton() {
         System.out.println("Personal Info clicked!");
-        // Logic to navigate to the personal info section
+      
+try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("personal_info.fxml")); // Update with your FXML file path
+    Parent personalInfoRoot = loader.load();
+    Scene personalInfoScene = new Scene(personalInfoRoot);
+    
+    // Assuming you have a reference to the current stage
+    Stage currentStage = (Stage) someNode.getScene().getWindow(); // Replace 'someNode' with an actual node reference
+    currentStage.setScene(personalInfoScene);
+    currentStage.show();
+} catch (IOException e) {
+    statusLabel.setText("Error navigating to personal info section: " + e.getMessage());
+}
     }
 
     // Event handler for the Professional Info button
     @FXML
     private void handleProfessionalInfoButton() {
         System.out.println("Professional Info clicked!");
-        // Logic to navigate to the professional info section
+     
+try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("professional_info.fxml")); // Update with your FXML file path
+    Parent professionalInfoRoot = loader.load();
+    Scene professionalInfoScene = new Scene(professionalInfoRoot);
+    
+    // Assuming you have a reference to the current stage
+    Stage currentStage = (Stage) someNode.getScene().getWindow(); // Replace 'someNode' with an actual node reference
+    currentStage.setScene(professionalInfoScene);
+    currentStage.show();
+} catch (IOException e) {
+    statusLabel.setText("Error navigating to professional info section: " + e.getMessage());
+}
     }
 
     // Event handler for the Upload button
     @FXML
     private void handleUploadButton() {
         System.out.println("Upload clicked!");
-        // Logic to handle file upload
+
+FileChooser fileChooser = new FileChooser();
+fileChooser.setTitle("Select a File");
+fileChooser.getExtensionFilters().addAll(
+    new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+    new FileChooser.ExtensionFilter("All Files", "*.*")
+);
+
+File selectedFile = fileChooser.showOpenDialog(someNode.getScene().getWindow()); // Replace 'someNode' with an actual node reference
+if (selectedFile != null) {
+    try {
+        // Process the file (e.g., read its contents)
+        List<String> lines = Files.readAllLines(selectedFile.toPath());
+        // You can do something with the lines here, e.g., display or save them
+        statusLabel.setText("File uploaded successfully: " + selectedFile.getName());
+    } catch (IOException e) {
+        statusLabel.setText("Error reading file: " + e.getMessage());
+    }
+} else {
+    statusLabel.setText("File selection was canceled.");
+}
     }
 
     // Method to clear input fields
