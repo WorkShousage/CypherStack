@@ -57,8 +57,8 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField maxWidth="255.0" promptText="First Name" style="-fx-background-color: #2e2e2e; -fx-text-fill: white; -fx-prompt-text-fill: gray;" />
-            <TextField maxWidth="255.0" prefHeight="26.0" prefWidth="255.0" promptText="Last Name" style="-fx-background-color: #2e2e2e; -fx-text-fill: white; -fx-prompt-text-fill: gray;" />
+            <TextField fx:id="firstNameTextField" onAction="#handleFirstNameAction" maxWidth="255.0" promptText="First Name" style="-fx-background-color: #2e2e2e; -fx-text-fill: white; -fx-prompt-text-fill: gray;" />
+            <TextField fx:id="lastNameTextField" onAction="#handleLastNameAction" maxWidth="255.0" prefHeight="26.0" prefWidth="255.0" promptText="Last Name" style="-fx-background-color: #2e2e2e; -fx-text-fill: white; -fx-prompt-text-fill: gray;" />
             <ComboBox id="role" prefHeight="26.0" prefWidth="255.0" promptText="Role" style="-fx-background-color: #2e2e2e; -fx-prompt-text-fill: gray;" />
             <HBox alignment="CENTER" prefHeight="38.0" prefWidth="337.0">
                <children>
@@ -79,7 +79,7 @@
                </font>
             </Button>
             <Label style="-fx-text-fill: gray;" text="Already have an account?" />
-            <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="14.0" prefWidth="84.0" style="-fx-text-fill: white; -fx-underline: true;" text="Log In" textAlignment="CENTER">
+            <Hyperlink  fx:id="loginLink" onAction="#handleLoginAction" alignment="CENTER" contentDisplay="CENTER" prefHeight="14.0" prefWidth="84.0" style="-fx-text-fill: white; -fx-underline: true;" text="Log In" textAlignment="CENTER">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
