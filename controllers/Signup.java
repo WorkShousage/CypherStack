@@ -50,7 +50,32 @@ public class SignUpController {
             return;
         }
 
-        // Logic to handle sign-up (e.g., save to a database)
+       
+String jdbcURL = "jdbc:mysql://localhost:3306/your_database"; // Update with your database URL
+String dbUser   = "your_username"; // Update with your database username
+String dbPassword = "your_password"; // Update with your database password
+
+String insertSQL = "INSERT INTO users (first_name, last_name, role, contact_no) VALUES (?, ?, ?, ?)";
+
+try (Connection connection = DriverManager.getConnection(jdbcURL, dbUser , dbPassword);
+     PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+     
+    preparedStatement.setString(1, firstName);
+    preparedStatement.setString(2, lastName);
+    preparedStatement.setString(3, role);
+    preparedStatement.setString(4, contactNo);
+    
+    int rowsAffected = preparedStatement.executeUpdate();
+    
+    if (rowsAffected > 0) {
+        statusLabel.setText("Sign up successful!");
+    } else {
+        statusLabel.setText("Sign up failed. Please try again.");
+    }
+    
+} catch (SQLException e) {
+    statusLabel.setText("Database error: " + e.getMessage());
+}
         System.out.println("Signing up...");
         System.out.printf("First Name: %s, Last Name: %s, Role: %s, Contact No: %s%n",
                 firstName, lastName, role, contactNo);
@@ -65,7 +90,19 @@ public class SignUpController {
     @FXML
     private void handleLoginLink() {
         System.out.println("Log In clicked!");
-        // Logic to navigate to the login screen
+     
+try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml")); // Update with your actual FXML file path
+    Parent loginRoot = loader.load();
+    Scene loginScene = new Scene(loginRoot);
+    
+    // Assuming you have a reference to the current stage
+    Stage currentStage = (Stage) loginLink.getScene().getWindow(); // Use the hyperlink as a reference
+    currentStage.setScene(loginScene);
+    currentStage.show();
+} catch (IOException e) {
+    statusLabel.setText("Error navigating to login screen: " + e.getMessage());
+}
     }
 
     // Method to clear input fields
