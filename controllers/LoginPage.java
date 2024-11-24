@@ -32,11 +32,47 @@ public class SignInController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        // Logic for sign-in (e.g., validate credentials)
+  if (email.isEmpty() || password.isEmpty()) {
+    System.out.println("Email and password must not be empty.");
+    statusLabel.setText("Email and password must not be empty."); // Show error message in the label
+} else if (validateCredentials(email, password)) {
+    System.out.println("Sign-in successful!");
+
+    // Navigate to the dashboard or main application screen
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml")); // Replace with your actual FXML file name
+        Parent dashboardView = loader.load();
+
+        // Get the current stage (window)
+        Stage currentStage = (Stage) signInButton.getScene().getWindow();
+
+        // Set the new scene
+        currentStage.setScene(new Scene(dashboardView));
+        currentStage.show();
+    } catch (Exception e) {
+        e.printStackTrace(); // Handle any exceptions that occur during loading
+    }
+} else {
+    System.out.println("Invalid email or password.");
+    statusLabel.setText("Invalid email or password."); // Show error message in the label
+}
         if (validateCredentials(email, password)) {
             // Proceed to the next screen or show success message
             System.out.println("Sign-in successful!");
-            // Add logic to navigate to the next screen
+            
+try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml")); // Replace with your actual FXML file name
+    Parent dashboardView = loader.load();
+
+    // Get the current stage (window)
+    Stage currentStage = (Stage) signInButton.getScene().getWindow();
+
+    // Set the new scene
+    currentStage.setScene(new Scene(dashboardView));
+    currentStage.show();
+} catch (Exception e) {
+    e.printStackTrace(); // Handle any exceptions that occur during loading
+}
         } else {
             // Show error message
             System.out.println("Invalid email or password.");
@@ -48,14 +84,42 @@ public class SignInController {
     @FXML
     private void handleForgotPassword() {
         System.out.println("Forgot password clicked!");
-        // Logic to handle password recovery
+      
+System.out.println("Forgot password clicked!");
+// Here you can open a new dialog or navigate to a password recovery screen
+try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordRecovery.fxml")); // Replace with your actual FXML file name
+    Parent recoveryView = loader.load();
+
+    // Get the current stage (window)
+    Stage currentStage = (Stage) forgotPasswordLink.getScene().getWindow();
+
+    // Set the new scene
+    currentStage.setScene(new Scene(recoveryView));
+    currentStage.show();
+} catch (Exception e) {
+    e.printStackTrace(); // Handle any exceptions that occur during loading
+}
     }
 
     // Event handler for the Create Account hyperlink
     @FXML
     private void handleCreateAccount() {
         System.out.println("Create Account clicked!");
-        // Logic to navigate to the account creation screen
+      
+try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateAccount.fxml")); // Replace with your actual FXML file name
+    Parent createAccountView = loader.load();
+
+    // Get the current stage (window)
+    Stage currentStage = (Stage) createAccountButton.getScene().getWindow();
+
+    // Set the new scene
+    currentStage.setScene(new Scene(createAccountView));
+    currentStage.show();
+} catch (Exception e) {
+    e.printStackTrace(); // Handle any exceptions that occur during loading
+}
     }
 
     // Method to validate user credentials (dummy implementation)
