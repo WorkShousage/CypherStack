@@ -47,14 +47,40 @@ public class DashboardController {
     @FXML
     private void handleDashboardButton() {
         System.out.println("Dashboard button clicked!");
-        // Logic to navigate to the dashboard
+        try {
+    // Load the dashboard FXML file
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml")); // Replace with your actual FXML file name
+    Parent dashboardView = loader.load();
+
+    // Get the current stage (window)
+    Stage currentStage = (Stage) dashboardButton.getScene().getWindow();
+
+    // Set the new scene
+    currentStage.setScene(new Scene(dashboardView));
+    currentStage.show();
+} catch (Exception e) {
+    e.printStackTrace(); // Handle any exceptions that occur during loading
+}
     }
 
     // Event handler for Profile button
     @FXML
     private void handleProfileButton() {
         System.out.println("Profile button clicked!");
-        // Logic to navigate to the profile
+      try {
+    // Load the profile FXML file
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile.fxml")); // Replace with your actual FXML file name
+    Parent profileView = loader.load();
+
+    // Get the current stage (window)
+    Stage currentStage = (Stage) profileButton.getScene().getWindow();
+
+    // Set the new scene
+    currentStage.setScene(new Scene(profileView));
+    currentStage.show();
+} catch (Exception e) {
+    e.printStackTrace(); // Handle any exceptions that occur during loading
+}
     }
 
     // Event handler for File Management button
