@@ -72,7 +72,12 @@ public class ProfileController {
     // This method is called when the "Cancel" button is clicked
     @FXML
     private void handleCancelButtonAction() {
-        // Logic to handle cancellation, such as clearing fields or closing the window
+      
+clearFields(); // Clear the input fields
+
+// Optionally, you can close the current window if desired
+Stage stage = (Stage) cancelButton.getScene().getWindow();
+stage.close(); // Close the window
         System.out.println("Changes canceled.");
         // Optionally, you can clear the fields
         clearFields();
